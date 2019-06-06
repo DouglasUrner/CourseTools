@@ -1,6 +1,6 @@
 require 'fileutils'
 
-var assignment_name = "42"
+assignment_name = "42"
 
 FileUtils.mkdir assignment_name
 
