@@ -1,30 +1,37 @@
 require 'fileutils'
 require 'optparse'
 
+# TODO: read default values.
+# TODO: command name from "argv[0]"
+
 options = {}
 OptionParser.new do |opts|
   opts.banner = "Usage: assignment [options] name..."
+
+  opts.on("-b", "--boilerplate", "Folder holding boilerplate files") do |b|
+    options[:boilerplate] = b
+  end
 
   opts.on("-v", "--[no-]verbose", "Run with verbose narration") do |v|
     options[:verbose] = v
   end
 
-  opts.on("-b", "--boilerplate", "Specify location of boilerplate files") do |b|
-    options[:boilerplate] = b
-  end
 end.parse!
 
 p options
 p ARGV
 
-assignment_name = "42"
+ARGV.each do |a|
 
-FileUtils.mkdir assignment_name
+  FileUtils.mkdir a
 
-# Copy in boilerplate files.
-FileUtils.touch "#{assignment_name}/README.md"
-FileUtils.touch "#{assignment_name}/PITCHME.md"
-FileUtils.touch "#{assignment_name}/index.md"
+  # TODO: Copy in boilerplate files from boilerplate folder.
+  # TODO: Edit boilerplate files.
+  FileUtils.touch "#{a}/README.md"
+  FileUtils.touch "#{a}/PITCHME.md"
+  FileUtils.touch "#{a}/index.md"
 
-FileUtils.mkdir "#{assignment_name}/assets"
-FileUtils.touch "#{assignment_name}/assets/.keep"
+  FileUtils.mkdir "#{a}/assets"
+  FileUtils.touch "#{a}/assets/.keep"
+
+end
