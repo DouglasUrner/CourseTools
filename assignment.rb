@@ -29,6 +29,7 @@ ARGV.each do |a|
   # TODO: Edit boilerplate files.
   FileUtils.touch "#{a}/README.md"
   FileUtils.touch "#{a}/PITCHME.md"
+  FileUtils.touch "#{a}/PITCHME.yaml"
   FileUtils.touch "#{a}/index.md"
 
   FileUtils.mkdir "#{a}/assets"
